@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFTraning", "WPFTraning\WPFTraning.csproj", "{396BB1F4-FAC4-4916-BB54-0DFD9C179432}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{72B81AA8-9120-4C46-8ABD-B00424A05881}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFTraningConsole", "Tests\WPFTraningConsole\WPFTraningConsole.csproj", "{4E1DE439-D892-4510-9CBD-8694FC65E382}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{396BB1F4-FAC4-4916-BB54-0DFD9C179432}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{396BB1F4-FAC4-4916-BB54-0DFD9C179432}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{396BB1F4-FAC4-4916-BB54-0DFD9C179432}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{396BB1F4-FAC4-4916-BB54-0DFD9C179432}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E1DE439-D892-4510-9CBD-8694FC65E382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E1DE439-D892-4510-9CBD-8694FC65E382}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E1DE439-D892-4510-9CBD-8694FC65E382}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E1DE439-D892-4510-9CBD-8694FC65E382}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4E1DE439-D892-4510-9CBD-8694FC65E382} = {72B81AA8-9120-4C46-8ABD-B00424A05881}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {04AB5876-51AB-48AA-89BA-CC3FB9AC870F}
+	EndGlobalSection
+EndGlobal
