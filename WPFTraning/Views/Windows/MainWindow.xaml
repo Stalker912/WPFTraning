@@ -4,9 +4,51 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFTraning"
+        xmlns:VM="clr-namespace:WPFTraning.ViewModels.Base"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+
+    <Window.Resources>
+        <VM:ViewModel x:Key="VMClickSoure"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <Binding Source="{StaticResource VMClickSoure}"/>
+    </Window.DataContext>
+    <Grid ScrollViewer.HorizontalScrollBarVisibility="Visible">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBox  Grid.Column="1"
+                Grid.Row="0"
+                x:Name="выравнивание" 
+                HorizontalAlignment="Left" 
+                Height="118" 
+                Margin="195,85,0,0" 
+                TextWrapping="Wrap"
+                Text="{Binding Clicks}"
+                VerticalAlignment="Top" 
+                Width="329" 
+                FontSize="36" 
+                HorizontalContentAlignment="Center" 
+                VerticalContentAlignment="Center">
+        </TextBox>
+        <Button Content="Button" 
+                HorizontalAlignment="Left" 
+                Grid.Row="1" 
+                VerticalAlignment="Center" 
+                Height="127" 
+                Width="336" 
+                Margin="188,0,0,0"
+                FontSize="24"
+                Command="{Binding ClickCommand}"
+        />
+        
+               
 
     </Grid>
 </Window>
