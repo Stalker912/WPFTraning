@@ -9,10 +9,10 @@
         Title="MainWindow" Height="450" Width="800">
 
     <Window.Resources>
-        <VM:ViewModel x:Key="VMClickSoure"/>
+        <VM:ViewModel x:Key="GameInfo"/>
     </Window.Resources>
     <Window.DataContext>
-        <Binding Source="{StaticResource VMClickSoure}"/>
+        <Binding Source="{StaticResource GameInfo}"/>
     </Window.DataContext>
     <Grid ScrollViewer.HorizontalScrollBarVisibility="Visible">
         <Grid.ColumnDefinitions>
@@ -23,32 +23,27 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBox  Grid.Column="1"
-                Grid.Row="0"
-                x:Name="выравнивание" 
-                HorizontalAlignment="Left" 
-                Height="118" 
-                Margin="195,85,0,0" 
-                TextWrapping="Wrap"
-                Text="{Binding Clicks}"
-                VerticalAlignment="Top" 
-                Width="329" 
-                FontSize="36" 
-                HorizontalContentAlignment="Center" 
-                VerticalContentAlignment="Center">
-        </TextBox>
-        <Button Content="Button" 
-                HorizontalAlignment="Left" 
-                Grid.Row="1" 
-                VerticalAlignment="Center" 
-                Height="127" 
-                Width="336" 
-                Margin="188,0,0,0"
-                FontSize="24"
-                Command="{Binding ClickCommand}"
-        />
-        
-               
+        <DataGrid x:Name="GameInfoGrid" Grid.Row="0" ItemsSource="{Binding GameInfoList}" MouseUp="GameInfoGrid_MouseUp"/> 
+
+        <Button Name="DeleteButton"
+            Content="Удалить" 
+            HorizontalAlignment="Left" 
+            Height="60" 
+            Margin="592,136,0,0" 
+            Grid.Row="1" 
+            VerticalAlignment="Top" 
+            Width="185"
+            FontSize="30"/>
+        <Button Name="AddButton"
+            Content="Добавить" 
+            HorizontalAlignment="Left" 
+            Height="60" 
+            Margin="363,136,0,0" 
+            Grid.Row="1" 
+            VerticalAlignment="Top" 
+            Width="185"
+            FontSize="30"/>
+      
 
     </Grid>
 </Window>
