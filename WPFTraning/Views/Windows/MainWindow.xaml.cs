@@ -11,25 +11,19 @@ namespace WPFTraning
 {
     public partial class MainWindow : Window
     {
-        private ViewModel MainWindowVM;
-
         public MainWindow()
         {
-            
             InitializeComponent();
-            MainWindowVM = new StandardKernel(new NinjectConfigModule()).Get<ViewModel>();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void GameInfoGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            ((Button)sender)?.Command?.Execute(sender);
+            (this.DataContext as ViewModel).LineDoubleClick();
         }
 
-        private void GameInfoGrid_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void GameInfoGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            var VAGI = new AboutGameInfo();
-            var VMAGI = new GameInfoAbout((sender as DataGrid)?.SelectedItem as GameInfo);
-            VAGI.DataContext = VMAGI;
+
         }
     }
 }

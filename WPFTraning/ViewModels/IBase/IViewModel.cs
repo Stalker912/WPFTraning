@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace WPFTraning.ViewModels.IBase
 {
-    internal interface IViewModel 
+    public interface IViewModel 
     {
-
+        public void LineDoubleClick();
     }
 }

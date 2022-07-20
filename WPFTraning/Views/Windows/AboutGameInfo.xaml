@@ -3,10 +3,63 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFTraning.Views.Windows"
+        xmlns:VMGIA="clr-namespace:WPFTraning.ViewModels.Base"
         mc:Ignorable="d"
-        Title="Информация об игре" Height="300" Width="400">
-    <Grid>
+        Title="Информация об игре" Height="auto" Width="400">
+    <Window.Resources>
+        <VMGIA:GameInfoAbout x:Key="VMGameInfoAbout"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <Binding Source="{StaticResource VMGameInfoAbout}"/>
+    </Window.DataContext>
+    <Grid Margin="5">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150px"/>
+            <ColumnDefinition Width="150px"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="GMI_Title_Name" 
+            Grid.Row="0" 
+            Grid.Column="0"
+            Style="{StaticResource Title}"
+            Text="Название игры:"
+            />
+        <TextBlock x:Name="GMI_Content_Name" 
+            Grid.Row="0" 
+            Grid.Column="1"
+            Text="{ Binding GameI.Name}"
+            />
         
+        <TextBlock x:Name="GMI_Title_About" 
+            Grid.Row="1" 
+            Grid.Column="0"
+            Style="{StaticResource Title}"
+            Text="О чём игра:"
+            />
+        <TextBlock x:Name="GMI_Content_About" 
+            Grid.Row="1" 
+            Grid.Column="1"
+            Text="{ Binding GameI.About}"
+            />
+
+        <TextBlock x:Name="GMI_Title_MC" 
+            Grid.Row="2" 
+            Grid.Column="0"
+            Style="{StaticResource Title}"
+            Text="Главный герой:"
+            />
+        <TextBlock x:Name="GMI_Content_MC" 
+            Grid.Row="2" 
+            Grid.Column="1"
+            Text="{ Binding GameI.MainHero}"
+            />
+
+
     </Grid>
 </Window>

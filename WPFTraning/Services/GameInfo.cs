@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPFTraning.Services
 {
-    internal class GameInfo
+    public class GameInfo
     {
        // public int id { get; set; }
         public string Name { get; set; }
@@ -26,5 +26,21 @@ namespace WPFTraning.Services
             this.About = About;
             this.MainHero = MainHero;
         }
+
+        //public static bool operator == (GameInfo a, GameInfo b)
+        //{
+        //    if (a == null && b == null) return true;
+        //    else
+        //    {
+        //        if (a.Name == b.Name && a.About == b.About && a.MainHero == b.MainHero) return true;
+        //        else return false;
+        //    }
+            
+        //}
+
+        //public static bool operator != (GameInfo a, GameInfo b)
+        //{
+        //    return !(a == b);
+        //}
     }
 }

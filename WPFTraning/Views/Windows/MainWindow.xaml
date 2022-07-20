@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFTraning"
         xmlns:VM="clr-namespace:WPFTraning.ViewModels.Base"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -14,6 +13,8 @@
     <Window.DataContext>
         <Binding Source="{StaticResource GameInfo}"/>
     </Window.DataContext>
+    
+    
     <Grid ScrollViewer.HorizontalScrollBarVisibility="Visible">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -23,7 +24,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <DataGrid x:Name="GameInfoGrid" Grid.Row="0" ItemsSource="{Binding GameInfoList}" MouseUp="GameInfoGrid_MouseUp"/> 
+        <DataGrid x:Name="GameInfoGrid"                   
+                Grid.Row="0" 
+                ItemsSource="{Binding GameInfoList.GameInfoList}"
+                SelectedItem="{Binding GridSelectedItem}"
+                MouseDoubleClick="GameInfoGrid_MouseDoubleClick"                
+                />
 
         <Button Name="DeleteButton"
             Content="Удалить" 
@@ -33,7 +39,9 @@
             Grid.Row="1" 
             VerticalAlignment="Top" 
             Width="185"
-            FontSize="30"/>
+            FontSize="30"
+            Command="{Binding DeleteCommand}"
+                />
         <Button Name="AddButton"
             Content="Добавить" 
             HorizontalAlignment="Left" 
@@ -42,7 +50,9 @@
             Grid.Row="1" 
             VerticalAlignment="Top" 
             Width="185"
-            FontSize="30"/>
+            FontSize="30"
+            Command="{Binding AddNewGameInfoWindowCommand}"
+            />
       
 
     </Grid>

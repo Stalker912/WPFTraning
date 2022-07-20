@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPFTraning.Services;
+using WPFTraning.ViewModels.Base;
+using WPFTraning.ViewModels.IBase;
 
 namespace WPFTraning.Views.Windows
 {
@@ -19,9 +22,10 @@ namespace WPFTraning.Views.Windows
     /// </summary>
     public partial class AboutGameInfo : Window
     {
-        public AboutGameInfo()
+        public AboutGameInfo(GameInfo? gameInfo = null)
         {
             InitializeComponent();
+            (this.DataContext as GameInfoAbout).GameI = gameInfo;
         }
     }
 }

@@ -1,0 +1,124 @@
+﻿<Window x:Class="WPFTraning.Views.Windows.AddNewGameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:VMANG="clr-namespace:WPFTraning.ViewModels.Base"
+        xmlns:local="clr-namespace:WPFTraning.Views.Windows"
+        mc:Ignorable="d"
+        Title="AddNewGaneWindow" Height="auto" Width="330px">
+
+    <Window.Resources>
+        <VMANG:VM_AddNewInfoAboutGame  x:Key="VM_AddNewInfoAboutGame"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <Binding Source="{StaticResource VM_AddNewInfoAboutGame}"/>
+    </Window.DataContext>
+    <Grid x:Name="GridGameInfo" 
+        Margin="5px">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150px"/>
+            <ColumnDefinition Width="150px"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="75px"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="GMI_Title_Name" 
+            Grid.Row="0" 
+            Grid.Column="0"
+            Style="{DynamicResource Title}"
+            TextWrapping="Wrap" 
+            Text="Название игры:"
+            />
+
+        
+        <StackPanel x:Name="GMI_ContentBlock_Name"
+            Grid.Row="0" 
+            Grid.Column="1"
+            Orientation="Vertical">
+
+            <TextBox x:Name="GMI_Content_Name" 
+            Grid.Row="0" 
+            Grid.Column="1"
+            TextWrapping="Wrap" 
+            Text="{Binding NewGameInfo.Name, UpdateSourceTrigger=LostFocus, Mode=OneWayToSource}"
+            Width="150"
+            />
+
+            <TextBlock x:Name="GMI_Warring_Name"
+                Style="{DynamicResource Hidden}"
+                Text=""
+            />
+        </StackPanel>
+       
+
+        <TextBlock x:Name="GMI_Title_About" 
+            Grid.Row="1" 
+            Grid.Column="0"
+            Style="{DynamicResource Title}"
+            TextWrapping="Wrap" 
+            Text="О чём игра:"
+            />
+
+
+        <StackPanel x:Name="GMI_ContentBlock_About"
+            Grid.Row="1" 
+            Grid.Column="1"
+            Orientation="Vertical">
+
+            <TextBox x:Name="GMI_Content_About" 
+            TextWrapping="Wrap" 
+            Text="{Binding NewGameInfo.About, UpdateSourceTrigger=LostFocus, Mode=OneWayToSource}"
+            Width="150"
+            />
+
+            <TextBlock x:Name="GMI_Warring_About"
+                Style="{DynamicResource Hidden}"
+                Text=""
+                />
+        </StackPanel>
+
+        <TextBlock x:Name="GMI_Title_MC" 
+            Grid.Row="2" 
+            Grid.Column="0"
+            Style="{DynamicResource Title}"
+            TextWrapping="Wrap" 
+            Text="Главный герой:"
+            />
+
+        <StackPanel x:Name="GMI_ContentBlock_MC"
+            Grid.Row="2" 
+            Grid.Column="1"
+            Orientation="Vertical">
+            
+            <TextBox x:Name="GMI_Content_MC" 
+            TextWrapping="Wrap" 
+            Text="{Binding NewGameInfo.MainHero, UpdateSourceTrigger=LostFocus, Mode=OneWayToSource}"
+            Width="150"
+            />
+
+            <TextBlock x:Name="GMI_Warring_MC"
+                Style="{DynamicResource Hidden}"
+                Text=""
+                />
+        </StackPanel>
+
+        <Button x:Name="AddNewGameInfoButton"
+            Grid.Column="1"
+            Grid.Row="3" 
+            HorizontalAlignment="Center"             
+            VerticalAlignment="Center" 
+            Height="40"
+            Width="100"
+            Content="Добавить"
+            FontSize="20"
+            Click="AddNewGameInfoButtonButton_Click"/>
+
+
+    </Grid>
+</Window>

@@ -7,53 +7,105 @@ using System.Windows.Input;
 using WPFTraning.Services;
 using WPFTraning.ViewModels.IBase;
 using WPFTraning.Views.Windows;
+using System.Linq;
+using WPFTraning.Models;
 
 namespace WPFTraning.ViewModels.Base
 {
     class ViewModel : IViewModel, INotifyPropertyChanged 
     {
+        #region INotifyPropertyChanged
         public event PropertyChangedEventHandler? PropertyChanged;
-
-        public int Id { get; set; }
-
-        public List<GameInfo> GameInfoList { get; set; }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
         }
+        #endregion
 
-
-        private void Delete(int id) {
-            GameInfoList.Remove(GameInfoList[id]);
+        public ViewModel()
+        {
+            GameInfoList = new PsGameInfoDB();
         }
 
-        public ICommand ClickCommand
+        private PsGameInfoDB gameInfoList;
+
+        private GameInfo gridSelectedItem;
+
+        public PsGameInfoDB GameInfoList {
+            get { 
+                return gameInfoList;
+            }
+            
+            set {
+                if(value != gameInfoList)
+                {
+                    gameInfoList = value;
+                    OnPropertyChanged("GameInfoList");
+                }
+            } 
+        }
+
+        public GameInfo GridSelectedItem
         {
             get
             {
-                return new ActionCommand(() => {
-                    if(Id != -1) Delete(Id);
-                    OnPropertyChanged("Click");
+                return gridSelectedItem;
+            }
+            set
+            {
+                if(value != null)
+                {
+                    gridSelectedItem = value;
+                    OnPropertyChanged("GridSelectedItem");
+                }
+                                 
+            }
+        }
+
+        public void Delete() {
+            if (gridSelectedItem != null)
+            {
+                GameInfoList.Remove(gridSelectedItem);
+                OnPropertyChanged("GameInfoList");
+            }
+        }
+
+        public void LineDoubleClick()
+        {
+            var VAGI = new AboutGameInfo(gridSelectedItem);
+            VAGI.Show();
+        }
+
+        public void CreateAddNewGameInfoWindow()
+        {
+            var NewWindow = new AddNewGameWindow(gameInfoList.GameInfoList.Add);
+            NewWindow.Show();
+        }
+
+        #region Commands
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                return new ActionCommand(() =>
+                {
+                    Delete();
                 });
             }
         }
 
-        public void CreateGameInfoView(GameInfo InfoAboutGame)
+        public ICommand AddNewGameInfoWindowCommand
         {
-            
+            get
+            {
+                return new ActionCommand(() =>
+                {
+                    CreateAddNewGameInfoWindow();
+                });
+            }
         }
 
-        public ViewModel()
-        {
-            Id = -1;
-            GameInfoList = new List<GameInfo>();
-            int id = -1;
-            GameInfoList.Add(new GameInfo("Dota2", "Моба Игра", "Каждый раз зазный"));
-            GameInfoList.Add(new GameInfo("CS", "Шутер", "Террарист или контр террарист"));
-            GameInfoList.Add(new GameInfo("Шахматы", "Головоломка", "Белый или чёрный"));
-            GameInfoList.Add(new GameInfo("MRG", "Преключение", "Raiden"));
-        }
-
+        #endregion
     }
 }
